@@ -32,8 +32,10 @@ server.get("/tweets", (request, response) => {
 server.post("/sign-up", (request, response) => {
 
     const {username, avatar} = request.body;
-    
-    console.log(users);
+    users.push({
+        username,
+        avatar
+    })
     response.send("Ok");
 })
 
