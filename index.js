@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-
+const MAXIMO_TWEETS = 10;
 
 
 const server = express();
@@ -20,7 +20,7 @@ const tweets = [];
 server.get("/tweets", (request, response) => {   
     const tweetsComAvatar = [];
 
-    for(let i = 0; i < tweets.length; i++){
+    for(let i = tweets.length -1; i >= 0; i--){
         let avatarTweet;
         for(let j = 0; j < users.length; j++){
             if(tweets[i].username === users[j].username){
@@ -40,7 +40,7 @@ server.get("/tweets", (request, response) => {
     }else{
         
         const tweetsResponse = [];
-        for(let i = tweets.length-1; i >= tweets.length-10; i--){
+        for(let i = 0; i < MAXIMO_TWEETS; i++){
             tweetsResponse.push(tweetsComAvatar[i]);
         }
         response.send(tweetsResponse);
