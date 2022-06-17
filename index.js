@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 const MAXIMO_TWEETS = 10;
 
-
 const server = express();
 server.use(cors());
 server.use(
